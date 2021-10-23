@@ -11,5 +11,6 @@ namespace Movies.Core.Repository
         public bool InsertCustomerList(CustomerList CustomerList);
         public bool UpdateCustomerList(CustomerList CustomerList);
         public bool DeleteCustomerList(int id);
+
     }
 }

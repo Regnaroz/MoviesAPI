@@ -36,6 +36,16 @@ namespace Movies.API.Controllers
         }
         [ProducesResponseType(typeof(List<Customer>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Customer), StatusCodes.Status400BadRequest)]
+        [Route("GetCustomerByEmail/{email}")]
+        [HttpGet]
+        public Customer GetCustomerByEmail(string email)
+        {
+            return customerService.GetCustomerByEmail(email);
+        }
+
+
+        [ProducesResponseType(typeof(List<Customer>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Customer), StatusCodes.Status400BadRequest)]
         [Route("InsertCustomer")]
         [HttpPost]
         public bool InsertCustomer(Customer customer)

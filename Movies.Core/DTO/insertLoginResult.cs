@@ -6,6 +6,7 @@ namespace Movies.Core.DTO
 {
     public class insertLoginResult
     {
+        //test for git push
         public  bool result { get; set; }
     }
 }

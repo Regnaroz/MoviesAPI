@@ -11,5 +11,6 @@ namespace Movies.Core.Service
         public bool InsertCustomer(Customer customer);
         public bool UpdateCustomer(Customer customer);
         public bool DeleteCustomer(int id);
+        public Customer GetCustomerByEmail(string email);
     }
 }

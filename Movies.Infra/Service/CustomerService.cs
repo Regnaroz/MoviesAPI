@@ -25,6 +25,11 @@ namespace Movies.Infra.Service
             return customerRepository.GetCustomer();
         }
 
+        public Customer GetCustomerByEmail(string email)
+        {
+            return customerRepository.GetCustomerByEmail(email);
+        }
+
         public bool InsertCustomer(Customer customer)
         {
             return customerRepository.InsertCustomer(customer);

@@ -34,6 +34,17 @@ namespace Movies.Infra.Repository
             return Result.ToList();
         }
 
+        public Customer GetCustomerByEmail(string email)
+        {
+            var paramteres = new DynamicParameters();
+            paramteres.Add("@email", email, dbType: DbType.String, direction: ParameterDirection.Input);
+            IEnumerable<Customer> Result = dBContext.Connection.Query<Customer>("GetCustomerByEmail", paramteres, commandType: CommandType.StoredProcedure);
+            if (Result != null)
+                return Result.First();
+            else
+                return null;
+        }
+
         public bool InsertCustomer(Customer customer)
         {
             var paramteres = new DynamicParameters();
