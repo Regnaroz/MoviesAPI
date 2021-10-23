@@ -36,7 +36,7 @@ namespace Movies.Infra.Service
             MimeMessage message = new MimeMessage();
 
             MailboxAddress from = new MailboxAddress("Movies",
-            "ramiabuagolah40@gmail.com");
+            "firstp637@gmail.com");
             message.From.Add(from);
 
 
@@ -55,7 +55,7 @@ namespace Movies.Infra.Service
             using (var clinte = new SmtpClient())
             {
                 clinte.Connect("smtp.gmail.com", 587, false);
-                clinte.Authenticate("ramiabuagolah40@gmail.com", "/*//*/*/*/");// Your Email and password
+                clinte.Authenticate("firstp637@gmail.com", "project-123");// Your Email and password
 
 
 

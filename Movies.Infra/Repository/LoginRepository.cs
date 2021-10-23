@@ -30,7 +30,7 @@ namespace Movies.Infra.Repository
         {
             var parameters = new DynamicParameters();
             parameters.Add("@UserName", userName, dbType: DbType.String, direction: ParameterDirection.Input);
-            IEnumerable<string> Result = DBContext.Connection.Query<string>("GetCustomerEmail", commandType: System.Data.CommandType.StoredProcedure);
+            IEnumerable<string> Result = DBContext.Connection.Query<string>("GetCustomerEmail",parameters, commandType: System.Data.CommandType.StoredProcedure);
             return Result.FirstOrDefault();
         }
 

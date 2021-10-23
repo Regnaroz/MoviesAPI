@@ -7,6 +7,6 @@ namespace Movies.Core.Service
 {
     public interface IMailService
     {
-        Task SendVerification(string userName);
+       public Task SendVerification(string userName);
     }
 }
