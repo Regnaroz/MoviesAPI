@@ -15,5 +15,8 @@ namespace Movies.Core.Service
         public IEnumerable<double> MaxMoviePrice();
         public IEnumerable<double> MinMoviePrice();
         public List<CustomerListMoviesDTO> CustomerListMovies();
+        public List<MovieCatDto> GetCatMovie();
+        public MovieDetailsDTO GetMovieByID(int Id);
+
     }
 }

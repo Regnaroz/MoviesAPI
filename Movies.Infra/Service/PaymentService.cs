@@ -38,5 +38,10 @@ namespace Movies.Infra.Service
         {
             return PaymentRepository.SumOfpayments();
         }
+
+        public Payment IsUserOwnIt(int Id)
+        {
+            return PaymentRepository.IsUserOwnIt(Id);
+        }
     }
 }

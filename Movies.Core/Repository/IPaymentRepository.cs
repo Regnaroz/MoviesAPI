@@ -12,5 +12,7 @@ namespace Movies.Core.Repository
         public bool UpdatePayment(Payment Payment);
         public bool DeletePayment(int id);
         public IEnumerable<double> SumOfpayments();
+        public Payment IsUserOwnIt(int Id);
+
     }
 }

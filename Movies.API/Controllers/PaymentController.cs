@@ -59,5 +59,13 @@ namespace Movies.API.Controllers
             return PaymentService.SumOfpayments();
 
         }
+        [ProducesResponseType(typeof(List<Payment>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Payment), StatusCodes.Status400BadRequest)]
+        [HttpGet]
+        [Route("IsUserOwnIt/{Id}")]//sub route
+        public Payment IsUserOwnIt(int Id)
+        {
+            return PaymentService.IsUserOwnIt(Id);
+        }
     }
 }

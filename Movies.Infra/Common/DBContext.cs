@@ -13,19 +13,17 @@ namespace Movies.Infra.Common
     {
         private DbConnection connection;
         private readonly IConfiguration configuration;
-
         public DBContext(IConfiguration configuration)
         {
             this.configuration = configuration;
-
         }
         public DbConnection Connection
         {
             get
             {
                 if (connection == null)
-                {
-                    connection = new SqlConnection(configuration["ConnectionStrings:DBConnectionString"]);
+                {                   
+                    connection = new SqlConnection(configuration["ConnectionStrings:DBConnectionString"]);                
                     connection.Open();
                 }
                 else if (connection.State != ConnectionState.Open)

@@ -81,5 +81,20 @@ namespace Movies.Infra.Repository
             IEnumerable<CustomerListMoviesDTO> Result = DBContext.Connection.Query<CustomerListMoviesDTO>("CustomerListMovies", commandType: CommandType.StoredProcedure);
             return Result.ToList();
         }
+
+        public List<MovieCatDto> GetCatMovie()
+        {
+            IEnumerable<MovieCatDto> Result = DBContext.Connection.Query<MovieCatDto>("GetMovieWithCat", commandType: System.Data.CommandType.StoredProcedure);
+            return Result.ToList();
+        }
+
+        public MovieDetailsDTO GetMovieByID(int Id)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@Id", Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            var Result = DBContext.Connection.Query<MovieDetailsDTO>("GetMovieByID", parameters, commandType: CommandType.StoredProcedure);
+            return Result.FirstOrDefault();
+        }
+
     }
 }

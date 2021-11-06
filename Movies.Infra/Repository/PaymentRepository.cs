@@ -61,5 +61,13 @@ namespace Movies.Infra.Repository
             IEnumerable<double> Result = DBContext.Connection.Query<double>("SumOfPayemnts", commandType: System.Data.CommandType.StoredProcedure);
             return Result;
         }
+
+        public Payment IsUserOwnIt(int Id)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@Id", Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            var Result = DBContext.Connection.Query<Payment>("IsUserOwnIt", parameters, commandType: CommandType.StoredProcedure);
+            return Result.FirstOrDefault();
+        }
     }
 }

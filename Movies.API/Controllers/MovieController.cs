@@ -77,5 +77,21 @@ namespace Movies.API.Controllers
         {
             return MovieService.CustomerListMovies();
         }
+        [ProducesResponseType(typeof(List<CustomerListMoviesDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(CustomerListMoviesDTO), StatusCodes.Status400BadRequest)]
+        [HttpGet]
+        [Route("GetCatMovie")]//sub route
+        public List<MovieCatDto> GetCatMovie()
+        {
+            return MovieService.GetCatMovie();
+        }
+        [ProducesResponseType(typeof(List<Movie>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Movie), StatusCodes.Status400BadRequest)]
+        [HttpGet]
+        [Route("GetMovieByID/{Id}")]//sub route
+        public MovieDetailsDTO GetMovieByID(int Id)
+        {
+            return MovieService.GetMovieByID(Id);
+        }
     }
 }
