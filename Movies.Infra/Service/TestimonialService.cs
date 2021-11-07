@@ -1,4 +1,5 @@
 ﻿using Movies.Core.Data;
+using Movies.Core.DTO;
 using Movies.Core.Repository;
 using Movies.Core.Service;
 using System;
@@ -19,7 +20,7 @@ namespace Movies.Infra.Service
             return TestimonialRepository.DeleteTestimonial(id);
         }
 
-        public List<Testimonial> GetActiveTestimonial()
+        public List<GetActiveTestimonial> GetActiveTestimonial()
         {
             return TestimonialRepository.GetActiveTestimonial();
         }

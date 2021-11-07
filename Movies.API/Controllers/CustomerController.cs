@@ -4,6 +4,7 @@ using Movies.Core.Data;
 using Movies.Core.Service;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -64,5 +65,42 @@ namespace Movies.API.Controllers
         {
             return customerService.UpdateCustomer(customer);
         }
+        [ProducesResponseType(typeof(List<Customer>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Customer), StatusCodes.Status400BadRequest)]
+        [Route("uploadImage")]
+        [HttpPost]
+        public Customer UploadIMage()
+        {
+            try
+            {
+                var file = Request.Form.Files[0];
+                byte[] fileContent;
+                using (var ms = new MemoryStream())
+                {
+                    file.CopyTo(ms);
+                    fileContent = ms.ToArray();
+                }
+                var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+                //decoder for image name , no duplicate errors
+                string attachmentFileName = $"{fileName}.{Path.GetExtension(file.FileName).Replace(".", "")}";
+                //path for angualr project file
+                var fullPath = Path.Combine("C:\\Users\\Moayyad Alajlouni\\Desktop\\Angularmovies\\src\\assets\\images\\Uploaded File", attachmentFileName);
+            
+                using (var stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+                Customer item = new Customer();
+                item.Img = attachmentFileName;
+
+
+                return item;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }
+
