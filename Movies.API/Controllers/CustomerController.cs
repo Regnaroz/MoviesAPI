@@ -43,8 +43,6 @@ namespace Movies.API.Controllers
         {
             return customerService.GetCustomerByEmail(email);
         }
-
-
         [ProducesResponseType(typeof(List<Customer>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Customer), StatusCodes.Status400BadRequest)]
         [Route("InsertCustomer")]
@@ -85,15 +83,12 @@ namespace Movies.API.Controllers
                 string attachmentFileName = $"{fileName}.{Path.GetExtension(file.FileName).Replace(".", "")}";
                 //path for angualr project file
                 var fullPath = Path.Combine("C:\\Users\\Moayyad Alajlouni\\Desktop\\Angularmovies\\src\\assets\\images\\Uploaded File", attachmentFileName);
-            
                 using (var stream = new FileStream(fullPath, FileMode.Create))
                 {
                     file.CopyTo(stream);
                 }
                 Customer item = new Customer();
                 item.Img = attachmentFileName;
-
-
                 return item;
             }
             catch (Exception)

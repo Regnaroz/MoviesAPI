@@ -16,9 +16,6 @@ namespace Movies.Core.Repository
         public IEnumerable<double> MinMoviePrice();
         public List<CustomerListMoviesDTO> CustomerListMovies();
         public List<MovieCatDto> GetCatMovie(); 
-        public MovieDetailsDTO GetMovieByID(int Id);
-
-
-
+        public MovieDetailsDTO GetMovieByID(int Id);       
     }
 }
