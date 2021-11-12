@@ -123,7 +123,6 @@ namespace Movies.API.Controllers
                 movies1.Id = mov.Id;
                 if (sum != 0)
                 {
-
                     movies1.Eval = (likes / sum) * 100;
                 }
                 else { movies1.Eval = 0; }
