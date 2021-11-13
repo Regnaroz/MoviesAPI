@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Movies.Core.Common;
 using Movies.Core.Data;
+using Movies.Core.DTO;
 using Movies.Core.Repository;
 using System;
 using System.Collections.Generic;
@@ -68,6 +69,13 @@ namespace Movies.Infra.Repository
             parameters.Add("@Id", Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var Result = DBContext.Connection.Query<Payment>("IsUserOwnIt", parameters, commandType: CommandType.StoredProcedure);
             return Result.FirstOrDefault();
+        }
+
+        public List<trendingMovies> getTrendingMovies()
+        {
+            IEnumerable<trendingMovies> Result = DBContext.Connection.Query<trendingMovies>("GetTrendingMovies", commandType: System.Data.CommandType.StoredProcedure);
+            return Result.ToList();
+
         }
     }
 }

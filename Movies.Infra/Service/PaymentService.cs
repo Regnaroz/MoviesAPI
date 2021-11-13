@@ -1,4 +1,5 @@
 ﻿using Movies.Core.Data;
+using Movies.Core.DTO;
 using Movies.Core.Repository;
 using Movies.Core.Service;
 using System;
@@ -42,6 +43,11 @@ namespace Movies.Infra.Service
         public Payment IsUserOwnIt(int Id)
         {
             return PaymentRepository.IsUserOwnIt(Id);
+        }
+
+        public List<trendingMovies> getTrendingMovies()
+        {
+            return PaymentRepository.getTrendingMovies();
         }
     }
 }
