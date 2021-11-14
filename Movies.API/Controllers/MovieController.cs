@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Movies.Core.Data;
 using Movies.Core.DTO;
 using Movies.Core.Service;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Movies.API.Controllers
 {
@@ -131,5 +133,84 @@ namespace Movies.API.Controllers
             }
             return moviesEval;
         }
+
+
+        [Route("uploadVideoImage")]
+        [HttpPost]
+        public Customer UploadIMage()
+        {
+            try
+            {
+                var file = Request.Form.Files[0];
+                byte[] fileContent;
+                using (var ms = new MemoryStream())
+                {
+                    file.CopyTo(ms);
+                    fileContent = ms.ToArray();
+                }
+                var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+
+
+                //decoder for image name , no duplicate errors
+                string attachmentFileName = $"{fileName}.{Path.GetExtension(file.FileName).Replace(".", "")}";
+                //path for angualr project file
+                var fullPath = Path.Combine("C:\\Users\\lenovo\\AngualrNew-811\\moviesAngular\\src\\assets\\" +
+                "images\\movies-images", attachmentFileName);
+                using (var stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+                Customer item = new Customer();
+                item.Img = attachmentFileName;
+
+
+                return item;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+
+
+        [Route("uploadVideo")]
+        [HttpPost]
+        public Customer UploadVideo()
+        {
+            try
+            {
+                var file = Request.Form.Files[0];
+                byte[] fileContent;
+                using (var ms = new MemoryStream())
+                {
+                    file.CopyTo(ms);
+                    fileContent = ms.ToArray();
+                }
+                var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+
+
+                //decoder for image name , no duplicate errors
+                string attachmentFileName = $"{fileName}.{Path.GetExtension(file.FileName).Replace(".", "")}";
+                //path for angualr project file
+                var fullPath = Path.Combine("C:\\Users\\lenovo\\AngualrNew-811\\moviesAngular\\src\\assets\\" +
+                "Videos", attachmentFileName);
+                using (var stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+                Customer item = new Customer();
+                item.Img = attachmentFileName;
+
+
+                return item;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+
     }
 }
