@@ -40,9 +40,10 @@ namespace Movies.Infra.Service
             return PaymentRepository.SumOfpayments();
         }
 
-        public Payment IsUserOwnIt(int Id)
+        public Payment IsUserOwnIt(int customerId, int movieId)
         {
-            return PaymentRepository.IsUserOwnIt(Id);
+        
+          return PaymentRepository.IsUserOwnIt(customerId,movieId);
         }
 
         public List<trendingMovies> getTrendingMovies()

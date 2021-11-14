@@ -63,10 +63,14 @@ namespace Movies.API.Controllers
         [ProducesResponseType(typeof(List<Payment>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Payment), StatusCodes.Status400BadRequest)]
         [HttpGet]
-        [Route("IsUserOwnIt/{Id}")]//sub route
-        public Payment IsUserOwnIt(int Id)
+        [Route("IsUserOwnIt/{customerId}/{movieId}")]//sub route
+        public bool IsUserOwnIt(int customerId, int movieId)
         {
-            return PaymentService.IsUserOwnIt(Id);
+            if (PaymentService.IsUserOwnIt(customerId, movieId)!=null)
+            {
+                return true;
+            }
+            return false;         
         }
         [ProducesResponseType(typeof(List<Payment>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Payment), StatusCodes.Status400BadRequest)]

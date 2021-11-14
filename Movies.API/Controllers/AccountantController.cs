@@ -50,5 +50,13 @@ namespace Movies.API.Controllers
         {
             return accountantService.UpdateAccountant(accountant);
         }
+        [ProducesResponseType(typeof(List<Accountant>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Accountant), StatusCodes.Status400BadRequest)]
+        [Route("GetAccountantByEmail/{email}")]
+        [HttpGet]
+        public Accountant GetAccountantByEmail(string email)
+        {
+            return accountantService.GetAccountantByEmail(email);
+        }
     }
 }

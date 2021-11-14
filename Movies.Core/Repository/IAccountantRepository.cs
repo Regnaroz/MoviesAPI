@@ -11,5 +11,7 @@ namespace Movies.Core.Repository
         public bool InsertAccountant(Accountant accountant);
         public bool UpdateAccountant(Accountant accountant);
         public bool DeleteAccountant(int id);
+        public Accountant GetAccountantByEmail(string email);
+
     }
 }

@@ -39,5 +39,9 @@ namespace Movies.Infra.Service
         {
             return customerRepository.UpdateCustomer(customer);
         }
+        public Customer GetCustomerById(int id)
+        {
+            return customerRepository.GetCustomerById(id);
+        }
     }
 }

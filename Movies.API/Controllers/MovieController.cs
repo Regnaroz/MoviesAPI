@@ -96,7 +96,7 @@ namespace Movies.API.Controllers
         [ProducesResponseType(typeof(Movie), StatusCodes.Status400BadRequest)]
         [HttpGet]
         [Route("GetMoviesEval")]//sub route
-        public List<MoviesEvalDTO> GetMoviesEval(int Id)
+        public List<MoviesEvalDTO> GetMoviesEval()
         {
             List<MoviesEvalDTO> moviesEval = new List<MoviesEvalDTO>();
             List<Movie> movies = MovieService.GetMovie();

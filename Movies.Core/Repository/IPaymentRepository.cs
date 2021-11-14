@@ -14,7 +14,7 @@ namespace Movies.Core.Repository
         public bool DeletePayment(int id);
         public List<trendingMovies> getTrendingMovies();
         public IEnumerable<double> SumOfpayments();
-        public Payment IsUserOwnIt(int Id);
+        public Payment IsUserOwnIt(int customerId,int movieId);
 
     }
 }

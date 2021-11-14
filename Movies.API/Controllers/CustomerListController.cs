@@ -54,6 +54,18 @@ namespace Movies.API.Controllers
         }
         [ProducesResponseType(typeof(List<CustomerList>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(CustomerList), StatusCodes.Status400BadRequest)]
+        [HttpGet]
+        [Route("IsInFavouraties/{customerId}/{movieId}")]
+        public bool IsInFavouraties(int customerId, int movieId)
+        {
+            if (CustomerListService.IsInFavouraties(customerId, movieId) != null)
+            {
+                return true;
+            }
+            return false;
+        }
+        [ProducesResponseType(typeof(List<CustomerList>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(CustomerList), StatusCodes.Status400BadRequest)]
         [HttpPost]
         [Route("Image")]
         public IActionResult Upload()

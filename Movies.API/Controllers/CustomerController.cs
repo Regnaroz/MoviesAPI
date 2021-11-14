@@ -65,6 +65,14 @@ namespace Movies.API.Controllers
         }
         [ProducesResponseType(typeof(List<Customer>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Customer), StatusCodes.Status400BadRequest)]
+        [Route("GetCustomerById/{id}")]
+        [HttpGet]
+        public Customer GetCustomerById(int id)
+        {
+            return customerService.GetCustomerById(id);
+        }
+        [ProducesResponseType(typeof(List<Customer>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Customer), StatusCodes.Status400BadRequest)]
         [Route("uploadImage")]
         [HttpPost]
         public Customer UploadIMage()

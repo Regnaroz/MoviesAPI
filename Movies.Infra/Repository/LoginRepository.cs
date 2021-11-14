@@ -48,19 +48,8 @@ namespace Movies.Infra.Repository
             parameters.Add("@departmentId", log.DepartmentId, dbType: DbType.Int32, direction: ParameterDirection.Input);           
             parameters.Add("@accountantId", log.AccountantId, dbType: DbType.Int32, direction: ParameterDirection.Input);
             parameters.Add("@customerId", log.CustomerId, dbType: DbType.Int32, direction: ParameterDirection.Input);
-
-            try
-            {
-                DBContext.Connection.Execute("InsertLogin", parameters, commandType: CommandType.StoredProcedure);
-
-                return true;
-            }
-            catch (Exception)
-            {
-
-                return false;
-            }
-           
+            DBContext.Connection.Execute("InsertLogin", parameters, commandType: CommandType.StoredProcedure);
+            return true;      
         }
 
         public Login isUserExist(LoginDTO login)

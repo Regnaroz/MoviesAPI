@@ -12,5 +12,6 @@ namespace Movies.Core.Repository
         public bool UpdateCustomer(Customer customer);
         public bool DeleteCustomer(int id);
         public Customer GetCustomerByEmail(string email);
+        public Customer GetCustomerById(int id);
     }
 }

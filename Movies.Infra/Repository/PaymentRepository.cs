@@ -63,10 +63,11 @@ namespace Movies.Infra.Repository
             return Result;
         }
 
-        public Payment IsUserOwnIt(int Id)
+        public Payment IsUserOwnIt(int customerId, int movieId)
         {
             var parameters = new DynamicParameters();
-            parameters.Add("@Id", Id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            parameters.Add("@customerId", customerId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            parameters.Add("@movieId", movieId, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var Result = DBContext.Connection.Query<Payment>("IsUserOwnIt", parameters, commandType: CommandType.StoredProcedure);
             return Result.FirstOrDefault();
         }

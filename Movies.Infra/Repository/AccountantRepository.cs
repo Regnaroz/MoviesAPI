@@ -68,5 +68,15 @@ namespace Movies.Infra.Repository
 
             return true;
         }
+        public Accountant GetAccountantByEmail(string email)
+        {
+            var paramteres = new DynamicParameters();
+            paramteres.Add("@email", email, dbType: DbType.String, direction: ParameterDirection.Input);
+            IEnumerable<Accountant> Result = dBContext.Connection.Query<Accountant>("GetAccountantByEmail", paramteres, commandType: CommandType.StoredProcedure);
+            if (Result != null)
+                return Result.First();  
+            else
+                return null;
+        }
     }
 }

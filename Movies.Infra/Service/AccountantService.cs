@@ -34,5 +34,10 @@ namespace Movies.Infra.Service
         {
             return accountantRepository.UpdateAccountant(accountant);
         }
+        public Accountant GetAccountantByEmail(string email)
+        {
+            return accountantRepository.GetAccountantByEmail(email);
+        }
+
     }
 }
