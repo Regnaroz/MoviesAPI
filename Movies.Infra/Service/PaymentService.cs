@@ -1,4 +1,5 @@
 ﻿using Movies.Core.Data;
+using Movies.Core.DTO;
 using Movies.Core.Repository;
 using Movies.Core.Service;
 using System;
@@ -37,6 +38,17 @@ namespace Movies.Infra.Service
         public IEnumerable<double> SumOfpayments()
         {
             return PaymentRepository.SumOfpayments();
+        }
+
+        public Payment IsUserOwnIt(int customerId, int movieId)
+        {
+        
+          return PaymentRepository.IsUserOwnIt(customerId,movieId);
+        }
+
+        public List<trendingMovies> getTrendingMovies()
+        {
+            return PaymentRepository.getTrendingMovies();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Movies.Core.Data;
+using Movies.Core.DTO;
 using Movies.Core.Repository;
 using Movies.Core.Service;
 using System;
@@ -33,5 +34,10 @@ namespace Movies.Infra.Service
         {
             return EvaluationRepository.UpdateEvaluation(Evaluation);
         }
+        public List<GetMoviesEvaluationDTO> GetMoviesEvaluation()
+        {
+            return EvaluationRepository.GetMoviesEvaluation();
+        }
+
     }
 }

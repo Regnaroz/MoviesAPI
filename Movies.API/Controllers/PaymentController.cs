@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Movies.Core.Data;
+using Movies.Core.DTO;
 using Movies.Core.Service;
 using System;
 using System.Collections.Generic;
@@ -59,5 +60,27 @@ namespace Movies.API.Controllers
             return PaymentService.SumOfpayments();
 
         }
+        [ProducesResponseType(typeof(List<Payment>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Payment), StatusCodes.Status400BadRequest)]
+        [HttpGet]
+        [Route("IsUserOwnIt/{customerId}/{movieId}")]//sub route
+        public bool IsUserOwnIt(int customerId, int movieId)
+        {
+            if (PaymentService.IsUserOwnIt(customerId, movieId)!=null)
+            {
+                return true;
+            }
+            return false;         
+        }
+        [ProducesResponseType(typeof(List<Payment>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Payment), StatusCodes.Status400BadRequest)]
+        [HttpGet]
+        [Route("GetTrending")]//sub route
+        public List<trendingMovies> GetTrending()
+        {
+            return PaymentService.getTrendingMovies();
+        }
     }
+
+ 
 }

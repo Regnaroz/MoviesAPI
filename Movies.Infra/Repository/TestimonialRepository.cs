@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Movies.Core.Common;
 using Movies.Core.Data;
+using Movies.Core.DTO;
 using Movies.Core.Repository;
 using System;
 using System.Collections.Generic;
@@ -25,9 +26,9 @@ namespace Movies.Infra.Repository
             return true;
         }
 
-        public List<Testimonial> GetActiveTestimonial()
+        public List<GetActiveTestimonial> GetActiveTestimonial()
         {
-            IEnumerable<Testimonial> Result = DBContext.Connection.Query<Testimonial>("GetActiveTestimonial", commandType: System.Data.CommandType.StoredProcedure);
+            IEnumerable<GetActiveTestimonial> Result = DBContext.Connection.Query<GetActiveTestimonial>("GetActiveTestimonial", commandType: System.Data.CommandType.StoredProcedure);
             return Result.ToList();
         }
 

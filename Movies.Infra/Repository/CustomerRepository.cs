@@ -44,6 +44,16 @@ namespace Movies.Infra.Repository
             else
                 return null;
         }
+        public Customer GetCustomerById(int id)
+        {
+            var paramteres = new DynamicParameters();
+            paramteres.Add("@id", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            IEnumerable<Customer> Result = dBContext.Connection.Query<Customer>("GetCustomerById", paramteres, commandType: CommandType.StoredProcedure);
+            if (Result != null)
+                return Result.First();
+            else
+                return null;
+        }
 
         public bool InsertCustomer(Customer customer)
         {

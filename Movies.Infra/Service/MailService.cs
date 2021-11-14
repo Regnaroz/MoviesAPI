@@ -56,9 +56,6 @@ namespace Movies.Infra.Service
             {
                 clinte.Connect("smtp.gmail.com", 587, false);
                 clinte.Authenticate("firstp637@gmail.com", "project-123");// Your Email and password
-
-
-
                 clinte.Send(message);
                 clinte.Disconnect(true);
             }

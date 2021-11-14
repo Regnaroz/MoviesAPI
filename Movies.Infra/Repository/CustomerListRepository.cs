@@ -51,5 +51,14 @@ namespace Movies.Infra.Repository
             DBContext.Connection.ExecuteAsync("UpdateCustomerList", parameters, commandType: CommandType.StoredProcedure);
             return true;
         }
+        public CustomerList IsInFavouraties(int customerId, int movieId)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@customerId", customerId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            parameters.Add("@movieId", movieId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            var Result = DBContext.Connection.Query<CustomerList>("IsInFavouraties", parameters, commandType: CommandType.StoredProcedure);
+            return Result.FirstOrDefault();
+        }
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Movies.Core.Data;
+using Movies.Core.DTO;
 using Movies.Core.Service;
 using System;
 using System.Collections.Generic;
@@ -54,7 +55,7 @@ namespace Movies.API.Controllers
         [ProducesResponseType(typeof(Testimonial), StatusCodes.Status400BadRequest)]
         [HttpGet]
         [Route("GetActiveTestimonial")]//sub route
-        public List<Testimonial> GetActiveTestimonial()
+        public List<GetActiveTestimonial> GetActiveTestimonial()
         {
             return TestimonialService.GetActiveTestimonial();
         }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Movies.Core.Data;
+using Movies.Core.DTO;
 using Movies.Core.Service;
 using System;
 using System.Collections.Generic;
@@ -49,6 +50,14 @@ namespace Movies.API.Controllers
         public bool UpdateEvaluation([FromBody] Evaluation Evaluation)
         {
             return EvaluationService.UpdateEvaluation(Evaluation);
+        }
+        [ProducesResponseType(typeof(List<Evaluation>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Evaluation), StatusCodes.Status400BadRequest)]
+        [HttpGet]
+        [Route("GetMoviesEvaluation")]//sub route
+        public List<GetMoviesEvaluationDTO> GetMoviesEvaluation()
+        {
+            return EvaluationService.GetMoviesEvaluation();
         }
     }
 }

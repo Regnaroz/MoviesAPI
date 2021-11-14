@@ -46,5 +46,13 @@ namespace Movies.Infra.Service
         {
             return MovieRepository.CustomerListMovies();
         }
+        public List<MovieCatDto> GetCatMovie()
+        {
+            return MovieRepository.GetCatMovie();
+        }
+        public MovieDetailsDTO GetMovieByID(int Id)
+        {
+            return MovieRepository.GetMovieByID(Id);
+        }
     }
 }

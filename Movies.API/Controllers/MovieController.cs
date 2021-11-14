@@ -3,10 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Movies.Core.Data;
 using Movies.Core.DTO;
 using Movies.Core.Service;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Movies.API.Controllers
 {
@@ -15,9 +12,11 @@ namespace Movies.API.Controllers
     public class MovieController : Controller
     {
         private readonly IMovieService MovieService;
-        public MovieController(IMovieService MovieService)
+        private readonly IEvaluationService evaluationService;
+        public MovieController(IMovieService MovieService, IEvaluationService evaluationService)
         {
             this.MovieService = MovieService;
+            this.evaluationService = evaluationService;
         }
         [ProducesResponseType(typeof(List<Movie>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Movie), StatusCodes.Status400BadRequest)]
@@ -76,6 +75,61 @@ namespace Movies.API.Controllers
         public List<CustomerListMoviesDTO> CustomerListMovies()
         {
             return MovieService.CustomerListMovies();
+        }
+        [ProducesResponseType(typeof(List<CustomerListMoviesDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(CustomerListMoviesDTO), StatusCodes.Status400BadRequest)]
+        [HttpGet]
+        [Route("GetCatMovie")]//sub route
+        public List<MovieCatDto> GetCatMovie()
+        {
+            return MovieService.GetCatMovie();
+        }
+        [ProducesResponseType(typeof(List<Movie>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Movie), StatusCodes.Status400BadRequest)]
+        [HttpGet]
+        [Route("GetMovieByID/{Id}")]//sub route
+        public MovieDetailsDTO GetMovieByID(int Id)
+        {
+            return MovieService.GetMovieByID(Id);
+        }
+        [ProducesResponseType(typeof(List<Movie>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Movie), StatusCodes.Status400BadRequest)]
+        [HttpGet]
+        [Route("GetMoviesEval")]//sub route
+        public List<MoviesEvalDTO> GetMoviesEval()
+        {
+            List<MoviesEvalDTO> moviesEval = new List<MoviesEvalDTO>();
+            List<Movie> movies = MovieService.GetMovie();
+            List<Evaluation> evaluations = evaluationService.GetEvaluation();
+
+            foreach (var mov in movies)
+            {
+
+                double sum = 0;
+                double likes = 0;
+                foreach (var eval in evaluations)
+                {
+                    if (mov.Id == eval.MovieId)
+                    {
+                        sum++;
+                        if (eval.Stars == 1)
+                        {
+                            likes++;
+                        }
+                    }
+
+                }
+                MoviesEvalDTO movies1 = new MoviesEvalDTO();
+                movies1.Id = mov.Id;
+                if (sum != 0)
+                {
+                    movies1.Eval = (likes / sum) * 100;
+                }
+                else { movies1.Eval = 0; }
+
+                moviesEval.Add(movies1);
+            }
+            return moviesEval;
         }
     }
 }

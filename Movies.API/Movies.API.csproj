@@ -18,5 +18,10 @@
     <ProjectReference Include="..\Movies.Infra\Movies.Infra.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="resc\images\" />
+    <Folder Include="resc\" />
+  </ItemGroup>
+
 
 </Project>

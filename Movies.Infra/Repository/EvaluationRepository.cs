@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Movies.Core.Common;
 using Movies.Core.Data;
+using Movies.Core.DTO;
 using Movies.Core.Repository;
 using System;
 using System.Collections.Generic;
@@ -51,5 +52,12 @@ namespace Movies.Infra.Repository
             DBContext.Connection.ExecuteAsync("UpdateEvaluation", parameters, commandType: CommandType.StoredProcedure);
             return true;
         }
+        public List<GetMoviesEvaluationDTO> GetMoviesEvaluation()
+        {
+            IEnumerable<GetMoviesEvaluationDTO> Result = DBContext.Connection.Query<GetMoviesEvaluationDTO>("GetMoviesEvaluation", commandType: System.Data.CommandType.StoredProcedure);
+            return Result.ToList();
+        }
+
+
     }
 }

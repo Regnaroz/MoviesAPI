@@ -34,5 +34,9 @@ namespace Movies.Infra.Service
         {
             return CustomerListRepository.UpdateCustomerList(CustomerList);
         }
+        public CustomerList IsInFavouraties(int customerId, int movieId)
+        {
+            return CustomerListRepository.IsInFavouraties(customerId,movieId);
+        }
     }
 }
