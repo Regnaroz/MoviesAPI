@@ -11,6 +11,8 @@ namespace Movies.Core.Repository
         public List<Payment> GetPayment();
         public bool InsertPayment(Payment Payment);
         public bool UpdatePayment(Payment Payment);
+
+        public List<monthlyGains> getMonthlyGains();
         public bool DeletePayment(int id);
         public List<trendingMovies> getTrendingMovies();
         public IEnumerable<double> SumOfpayments();
