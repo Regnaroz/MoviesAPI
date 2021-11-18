@@ -38,6 +38,10 @@ namespace Movies.Infra.Service
         {
             return EvaluationRepository.GetMoviesEvaluation();
         }
+        public Evaluation IsCustomerRated(int customerId, int movieId)
+        {
+            return EvaluationRepository.IsCustomerRated(customerId, movieId);
+        }
 
     }
 }

@@ -41,6 +41,7 @@ namespace Movies.Infra.Repository
             parameters.Add("@Watched", Payment.Watched, dbType: DbType.Int32, direction: ParameterDirection.Input);
             parameters.Add("@VisaCard", Payment.VisaCard, dbType: DbType.String, direction: ParameterDirection.Input);
             parameters.Add("@Value", Payment.Value, dbType: DbType.Double, direction: ParameterDirection.Input);
+            parameters.Add("@time", DateTime.Now, dbType: DbType.DateTime, direction: ParameterDirection.Input);
             DBContext.Connection.ExecuteAsync("InsertPayment", parameters, commandType: CommandType.StoredProcedure);
             return true;
         }

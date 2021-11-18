@@ -97,11 +97,10 @@ namespace Movies.Infra.Service
             return false;
         }
 
-        
-
+       
         public bool UpdateLogin(Login log)
         {
-            return UpdateLogin(log);
+            return LoginRepository.UpdateLogin(log);
         }
     }
 }

@@ -59,5 +59,17 @@ namespace Movies.API.Controllers
         {
             return EvaluationService.GetMoviesEvaluation();
         }
+        [ProducesResponseType(typeof(List<Evaluation>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Evaluation), StatusCodes.Status400BadRequest)]
+        [HttpGet]
+        [Route("IsCustomerRated/{customerId}/{movieId}")]
+        public bool IsCustomerRated(int customerId, int movieId)
+        {
+            if (EvaluationService.IsCustomerRated(customerId, movieId) != null)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

@@ -154,7 +154,7 @@ namespace Movies.API.Controllers
                 //decoder for image name , no duplicate errors
                 string attachmentFileName = $"{fileName}.{Path.GetExtension(file.FileName).Replace(".", "")}";
                 //path for angualr project file
-                var fullPath = Path.Combine("C:\\Users\\lenovo\\AngualrNew-811\\moviesAngular\\src\\assets\\" +
+                var fullPath = Path.Combine("C:\\Users\\Moayyad Alajlouni\\Desktop\\Angularmovies\\src\\assets\\" +
                 "images\\movies-images", attachmentFileName);
                 using (var stream = new FileStream(fullPath, FileMode.Create))
                 {
@@ -193,7 +193,7 @@ namespace Movies.API.Controllers
                 //decoder for image name , no duplicate errors
                 string attachmentFileName = $"{fileName}.{Path.GetExtension(file.FileName).Replace(".", "")}";
                 //path for angualr project file
-                var fullPath = Path.Combine("C:\\Users\\lenovo\\AngualrNew-811\\moviesAngular\\src\\assets\\" +
+                var fullPath = Path.Combine("C:\\Users\\Moayyad Alajlouni\\Desktop\\Angularmovies\\src\\assets\\" +
                 "Videos", attachmentFileName);
                 using (var stream = new FileStream(fullPath, FileMode.Create))
                 {
