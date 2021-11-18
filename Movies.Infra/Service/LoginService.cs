@@ -97,8 +97,7 @@ namespace Movies.Infra.Service
             return false;
         }
 
-        
-
+       
         public bool UpdateLogin(Login log)
         {
             return LoginRepository.UpdateLogin(log);

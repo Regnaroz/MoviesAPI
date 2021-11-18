@@ -13,6 +13,6 @@ namespace Movies.Core.Service
         public bool UpdateEvaluation(Evaluation Evaluation);
         public bool DeleteEvaluation(int id);
         public List<GetMoviesEvaluationDTO> GetMoviesEvaluation();
-
+        public Evaluation IsCustomerRated(int customerId, int movieId);
     }
 }

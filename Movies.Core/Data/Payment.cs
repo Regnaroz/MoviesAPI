@@ -17,7 +17,6 @@ namespace Movies.Core.Data
         public string VisaCard { get; set; }
         public decimal? Value { get; set; }
         public DateTime? time { get; set; }
-
         public virtual Customer Customer { get; set; }
         public virtual Movie Movie { get; set; }
     }
