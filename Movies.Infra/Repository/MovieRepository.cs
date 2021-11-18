@@ -63,7 +63,7 @@ namespace Movies.Infra.Repository
             parameters.Add("@Country", Movie.Country, dbType: DbType.String, direction: ParameterDirection.Input);
             parameters.Add("@ReleaseDate", Movie.ReleaseDate, dbType: DbType.Date, direction: ParameterDirection.Input);
             parameters.Add("@Price", Movie.Price, dbType: DbType.Double, direction: ParameterDirection.Input);
-            DBContext.Connection.ExecuteAsync("UpdateMovie", parameters, commandType: CommandType.StoredProcedure);
+            DBContext.Connection.Execute("UpdateMovie", parameters, commandType: CommandType.StoredProcedure);
             return true;
         }
         public IEnumerable<double> MaxMoviePrice()

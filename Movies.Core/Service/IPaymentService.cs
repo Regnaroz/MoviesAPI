@@ -12,6 +12,7 @@ namespace Movies.Core.Service
         public bool InsertPayment(Payment Payment);
         public bool UpdatePayment(Payment Payment);
         public List<trendingMovies> getTrendingMovies();
+        public List<monthlyGains> getMonthlyGains();
         public bool DeletePayment(int id);
         public IEnumerable<double> SumOfpayments();
         public Payment IsUserOwnIt(int customerId, int movieId);

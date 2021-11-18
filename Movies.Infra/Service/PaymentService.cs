@@ -50,5 +50,11 @@ namespace Movies.Infra.Service
         {
             return PaymentRepository.getTrendingMovies();
         }
+
+        public List<monthlyGains> getMonthlyGains()
+        {
+            return PaymentRepository.getMonthlyGains();
+
+        }
     }
 }

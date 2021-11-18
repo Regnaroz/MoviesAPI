@@ -80,6 +80,14 @@ namespace Movies.API.Controllers
         {
             return PaymentService.getTrendingMovies();
         }
+        [ProducesResponseType(typeof(List<Payment>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Payment), StatusCodes.Status400BadRequest)]
+        [HttpGet]
+        [Route("getMonthlyGains")]//sub route
+        public List<monthlyGains> GetMonthlyGains()
+        {
+            return PaymentService.getMonthlyGains();
+        }
     }
 
  

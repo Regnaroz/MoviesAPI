@@ -79,5 +79,12 @@ namespace Movies.Infra.Repository
             return Result.ToList();
 
         }
+
+        public List<monthlyGains> getMonthlyGains()
+        {
+            IEnumerable<monthlyGains> Result = DBContext.Connection.Query<monthlyGains>("GetMonthlyFinancials", commandType: System.Data.CommandType.StoredProcedure);
+            return Result.ToList();
+
+        }
     }
 }
