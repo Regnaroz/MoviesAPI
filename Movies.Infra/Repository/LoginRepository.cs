@@ -96,7 +96,7 @@ namespace Movies.Infra.Repository
             parameters.Add("@DepartmentId", log.DepartmentId, dbType: DbType.Int32, direction: ParameterDirection.Input);
             parameters.Add("@AccountantId", log.AccountantId, dbType: DbType.Int32, direction: ParameterDirection.Input);
             parameters.Add("@CustomerId", log.CustomerId, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            DBContext.Connection.ExecuteAsync("UpdateLogin", parameters, commandType: CommandType.StoredProcedure);
+            DBContext.Connection.Execute("UpdateLogin", parameters, commandType: CommandType.StoredProcedure);
             return true;
         }
 
